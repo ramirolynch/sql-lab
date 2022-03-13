@@ -1,0 +1,39 @@
+select * from customers 
+
+select distinct country from customers
+
+select * from customers where customer_id like 'BL%'
+
+select * from orders order by order_id asc limit 100;
+
+select * from customers where postal_code in ('1010', '3012', '12209', '05023')
+
+select * from orders where ship_region != 'null'
+
+select * from customers order by country, city
+
+INSERT INTO customers (customer_id, company_name, contact_name, contact_title, address, city,region, postal_code, country, phone, fax) VALUES ('VER99', 'The Emporium', 'Jonathan Queen', 'Owner','123 Main Street', 'Buenos Aires','North', '1822', 'Argentina', '2088888', '2099999')
+
+update orders set ship_region = 'EuroZone' where ship_country = 'France' returning *;
+
+delete from order_details where quantity = 1
+
+SELECT min(quantity), max(quantity), avg(quantity) FROM order_details;
+
+SELECT min(quantity), max(quantity), avg(quantity) FROM order_details GROUP BY order_id
+
+select customer_id from orders where order_id = '10290'
+
+select * from orders ords inner join customers custs on ords.customer_id = custs.customer_id
+
+select * from customers left join orders  on country = ship_country
+
+select * from customers right join orders on country = ship_country
+
+select ship_city, ship_country from employees emp inner join orders ord on emp.employee_id = ord.employee_id where emp.city = 'London'
+
+select * from orders ords join order_details deets on ords.order_id = deets.order_id where product_id = '1'
+
+select first_name from employees where reports_to is null
+
+select first_name from employees where employees.reports_to = '2'
